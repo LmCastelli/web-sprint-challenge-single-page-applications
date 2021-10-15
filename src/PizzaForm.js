@@ -8,7 +8,7 @@ export default function PizzaForm (props) {
         submit, 
         change,
         errors,
-        disabled
+        disabled,
     } = props
 
     const onSubmit = e => {
@@ -39,6 +39,22 @@ export default function PizzaForm (props) {
             margin-left: 100%;
         }
     `
+    const ErrorDiv = styled.div`
+        font-size: larger;
+        color: red;
+    `
+    const Toppings = styled.div`
+        display: flex;
+        justify-content: space-between;
+    `
+    const Submit = styled.div`
+        button {
+            margin-top: 5%;
+            margin-bottom: 5%;
+            font-size: larger;
+        }
+    `
+    
 
     return (
         <FormContainer>
@@ -49,16 +65,13 @@ export default function PizzaForm (props) {
                 </Link>
             </FormHeader>
             <form id="pizza-form" onSubmit={onSubmit}>
-                <div className="errorMessages">
-                    <div>{errors.name}</div>
-                    <div>{errors.size}</div>
-                </div>
                 <div>
                     <h2>Make your pizza!</h2>
                     <img src="https://media.istockphoto.com/photos/tasty-pepperoni-pizza-and-cooking-ingredients-tomatoes-basil-on-black-picture-id1083487948?k=20&m=1083487948&s=612x612&w=0&h=ROZ5t1K4Kjt5FQteVxTyzv_iqFcX8aqpl7YuA1Slm7w=" alt="pizza pizza"></img>
                 </div>
                 <div>
                     <h2>Who's this pizza for?</h2>
+                    <ErrorDiv>{errors.name}</ErrorDiv>
                     <label>Name:
                         <input 
                             value={values.name}
@@ -70,6 +83,7 @@ export default function PizzaForm (props) {
                     </label>
 
                     <h2>What size ya feeling?</h2>
+                    <ErrorDiv>{errors.size}</ErrorDiv>
                     <label>Size:
                         <select 
                             value={values.size}
@@ -85,8 +99,8 @@ export default function PizzaForm (props) {
                         </select> 
                     </label>
                 </div>
-                <div className="toppingContainer">
-                    <h2>Choose your toppings!</h2>
+                <h2>Choose your toppings!</h2>
+                <Toppings>
                     <label>Sausage
                         <input 
                             type="checkbox"
@@ -119,7 +133,7 @@ export default function PizzaForm (props) {
                             checked={values.pepperoni}
                         />
                     </label>
-                </div>
+                </Toppings>
                 <div className="specialInstructions">
                     <h2>Special Instructions</h2>
                     <label>Special Instructions
@@ -132,10 +146,10 @@ export default function PizzaForm (props) {
                         />
                     </label>
                 </div>
-                <div className="submit">
+                <Submit>
                     
                     <button id="order-button" disabled={disabled}>Add to Order</button>
-                </div>
+                </Submit>
             </form>
         </FormContainer>
 

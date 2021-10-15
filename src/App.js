@@ -16,7 +16,7 @@ const initialFormValues = {
   mushrooms: false,
   olives: false,
   sausage: false,
-  special: ''
+  specialInstructions: ''
 }
 const initialErrors = {
   name: '',
@@ -27,7 +27,7 @@ const orderList = [];
 const initialDisabled = true;
 
 const App = () => {
-  const [order, setOrder] = useState(orderList);
+  const [orders, setOrder] = useState(orderList);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [errorValues, setErrorValues] = useState(initialErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
@@ -36,6 +36,7 @@ const App = () => {
   const postNewOrder = newOrder => {
     axios.post('https://reqres.in/api/orders', newOrder)
     .then(res => {
+      console.log(res.data)
       setOrder([res.data, ...orderList]);
     }).catch(err => {
       console.error(err);
@@ -58,10 +59,10 @@ const App = () => {
     })
   }
 
-  const formSubmit = () => {
+  const Submit = () => {
     const newOrder = {
       name: formValues.name.trim(),
-      size: formValues.size,
+      size: formValues.size.trim(),
       pepperoni: formValues.pepperoni,
       olives: formValues.olives,
       sausage: formValues.sausage,
@@ -85,7 +86,7 @@ const App = () => {
           <HomePage />
         </Route>
         <Route path={'/pizza'}>
-          <PizzaForm values={formValues} change={change} submit={formSubmit} errors={errorValues} disabled={disabled}/>
+          <PizzaForm values={formValues} change={change} submit={Submit} errors={errorValues} disabled={disabled}/>
         </Route>
       </Switch>
     </div>
