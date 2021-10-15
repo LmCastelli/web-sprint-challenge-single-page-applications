@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 export default function PizzaForm (props) {
     const {
@@ -21,14 +22,32 @@ export default function PizzaForm (props) {
         change(name, valueToChange)
     }
 
+    const FormContainer = styled.div`
+        width:70%auto;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid red;
+    `
+    const FormHeader = styled.div`
+        width:100%auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        button {
+            margin-left: 100%;
+        }
+    `
+
     return (
-        <div className="PizzaFormContainer">
-            <div className="pizzaHeader">
-                <h1>Heyo</h1>
+        <FormContainer>
+            <FormHeader>
+                <h1>Great Choice!</h1>
                 <Link to={'/'}>
                     <button>Home</button>
                 </Link>
-            </div>
+            </FormHeader>
             <form id="pizza-form" onSubmit={onSubmit}>
                 <div className="errorMessages">
                     <div>{errors.name}</div>
@@ -36,7 +55,7 @@ export default function PizzaForm (props) {
                 </div>
                 <div>
                     <h2>Make your pizza!</h2>
-                    <img src="" alt="pizza pizza"></img>
+                    <img src="https://media.istockphoto.com/photos/tasty-pepperoni-pizza-and-cooking-ingredients-tomatoes-basil-on-black-picture-id1083487948?k=20&m=1083487948&s=612x612&w=0&h=ROZ5t1K4Kjt5FQteVxTyzv_iqFcX8aqpl7YuA1Slm7w=" alt="pizza pizza"></img>
                 </div>
                 <div>
                     <h2>Who's this pizza for?</h2>
@@ -115,10 +134,10 @@ export default function PizzaForm (props) {
                 </div>
                 <div className="submit">
                     
-                    <button id="order-button">Add to Order</button>
+                    <button id="order-button" disabled={disabled}>Add to Order</button>
                 </div>
             </form>
-        </div>
+        </FormContainer>
 
     )
 }

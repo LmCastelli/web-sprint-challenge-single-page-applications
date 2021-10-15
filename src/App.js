@@ -18,16 +18,13 @@ const initialFormValues = {
   sausage: false,
   special: ''
 }
-
 const initialErrors = {
   name: '',
   size: ''
 }
 
-
 const orderList = [];
 const initialDisabled = true;
-
 
 const App = () => {
   const [order, setOrder] = useState(orderList);
@@ -68,7 +65,8 @@ const App = () => {
       pepperoni: formValues.pepperoni,
       olives: formValues.olives,
       sausage: formValues.sausage,
-      mushrooms: formValues.mushrooms
+      mushrooms: formValues.mushrooms,
+      specialInstructions: formValues.specialInstructions
     }
 
     postNewOrder(newOrder);
