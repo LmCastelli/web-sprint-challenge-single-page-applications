@@ -13,7 +13,7 @@ export default function HomePage() {
             <div className="imgWrapper">
                 <img src="https://media-cdn.tripadvisor.com/media/photo-s/1b/b7/6f/ec/margherita.jpg" alt="Yummy Pizza"></img>
                 <Link to={'/pizza'}>
-                    <button>Yeah that pizza looks yummy</button>
+                    <button id="order-pizza">Order Pizza</button>
                 </Link>
             </div>
             <div className="OtherFoodOptions">

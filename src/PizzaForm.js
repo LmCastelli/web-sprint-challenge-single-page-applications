@@ -109,12 +109,13 @@ export default function PizzaForm (props) {
                             name="specialInstructions"
                             onChange={onChange}
                             value={values.specialInstructions}
+                            id="special-text"
                         />
                     </label>
                 </div>
                 <div className="submit">
                     
-                    <button disabled={disabled}>Add to Order</button>
+                    <button id="order-button">Add to Order</button>
                 </div>
             </form>
         </div>
